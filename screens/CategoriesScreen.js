@@ -8,27 +8,26 @@ import {
 } from "react-native";
 
 import CATEGORIES from "../data/dummy-categories";
+import CategoryCard from "../components/CategoryCard";
 
 const CategoriesScreen = ({ navigation }) => {
-  const renderCategoryItem = (categoryItem) => {
-    const { item } = categoryItem;
+  renderCategoryCard = ({ item }) => {
     return (
-      <TouchableOpacity
-        style={styles.categoryItem}
-        onPress={() =>
+      <CategoryCard
+        title={item.title}
+        color={item.color}
+        onSelect={() => {
           navigation.navigate("CategoryMeal", {
             categoryId: item.id
-          })
-        }
-      >
-        <Text>{item.title}</Text>
-      </TouchableOpacity>
+          });
+        }}
+      />
     );
   };
 
   return (
     <FlatList
-      renderItem={renderCategoryItem}
+      renderItem={renderCategoryCard}
       numColumns={2}
       data={CATEGORIES}
       keyExtractor={(item) => item.id}
@@ -41,9 +40,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
-  },
-  categoryItem: {
-    flex: 1
   }
 });
 
