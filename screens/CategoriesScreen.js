@@ -14,7 +14,7 @@ const CategoriesScreen = ({ navigation }) => {
     const { item } = categoryItem;
     return (
       <TouchableOpacity
-        style={styles}
+        style={styles.categoryItem}
         onPress={() =>
           navigation.navigate("CategoryMeal", {
             categoryId: item.id
