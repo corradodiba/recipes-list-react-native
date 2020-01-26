@@ -11,12 +11,17 @@ import CATEGORIES from "../data/dummy-categories";
 
 const CategoriesScreen = ({ navigation }) => {
   const renderCategoryItem = (categoryItem) => {
+    const { item } = categoryItem;
     return (
       <TouchableOpacity
-        style={styles.categoryItem}
-        onPress={() => navigation.navigate("CategoryMeal")}
+        style={styles}
+        onPress={() =>
+          navigation.navigate("CategoryMeal", {
+            categoryId: item.id
+          })
+        }
       >
-        <Text>{categoryItem.item.title}</Text>
+        <Text>{item.title}</Text>
       </TouchableOpacity>
     );
   };
